@@ -1,16 +1,17 @@
 [← Back to Main README](../README.md.md)
 # OpenWrt – LinkIt Smart 7688
-
+ 
 OpenWrt v25.12.5 migration, customization and development for the MediaTek LinkIt Smart 7688 platform.
+
+**Note** This docuement is yet not final. 
 
 ## Table of Contents
 
 1. [Project Overview](#1-project-overview)
-2. [Platform Information](#2-platform-information)
-3. [Migration Workflow](#3-migration-workflow)
-4. [Feature Index](#4-feature-index)
-5. [Status Definitions](#5-status-definitions)
-6. [Documentation Guidelines](#6-documentation-guidelines)
+2. [Migration Workflow](#3-migration-workflow)
+3. [Feature Index](#4-feature-index)
+4. [Status Definitions](#5-status-definitions)
+5. [Documentation Guidelines](#6-documentation-guidelines)
 
 ---
 
@@ -20,38 +21,18 @@ This project focuses on migrating and customizing OpenWrt for the MediaTek LinkI
 
 It covers environment setup, system configuration, package development, networking, firmware generation, deployment and hardware validation.
 
-## 2. Details
 
-### 2.1 Platform Information
-| Parameter | Details |
-|---|---|
-| Operating System | OpenWrt |
-| Version | v25.12.5 |
-| Hardware | MediaTek LinkIt Smart 7688 |
-| Architecture | MIPS |
-| Development Host | Ubuntu Linux |
-
-### 2.2 . Project Structure at Start
-
-```text
-openwrt25.12.5_bringup/
-├── README.md
-├── docs/
-│   ├── migration.md
-│   └── initial_setup.md
-├── scripts/
-│   └── initial_setup.sh
-└── .gitignore
-    
-```
-## 3. Migration Workflow
+## 2. Migration Workflow
 
 The overall development and migration process follows these phases:
 
-1. **Initial Setup** – Prepare the development environment and OpenWrt source.
+1. **Initial Setup** – Setup initial makeable/buildable setup. [← Refer to Intial Setup Script](./initial_setup.md)
+2. Make/build it and update the .gitignore file
+3. Network Stack update
+4. So on ... (update soon... )
 
 
-## 4. Feature Index
+## 3. Feature Index
 
 Individual feature documentation, implementation details and usage instructions are maintained under `linkit/docs/`.
 
@@ -66,7 +47,7 @@ Individual feature documentation, implementation details and usage instructions 
 | Firmware Deployment | Firmware flashing and deployment | [firmware_deployment.md](./linkit/docs/firmware_deployment.md) | Planned |
 | Testing & Validation | Hardware and functional validation | [testing.md](./linkit/docs/testing.md) | Planned |
 
-## 5. Status Definitions
+## 4. Status Definitions
 
 | Status | Description |
 |---|---|
@@ -75,7 +56,7 @@ Individual feature documentation, implementation details and usage instructions 
 | Planned | Feature is identified for future development. |
 | Completed | Implementation and validation are complete. |
 
-## 6. Documentation Guidelines
+## 5. Documentation Guidelines
 
 - Maintain individual documentation for each feature under `./docs/`.
 - Update the Feature Index whenever a new feature is introduced.

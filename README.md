@@ -1,8 +1,6 @@
 
 # openwrt25.12.5_bringup
 
-# **Note:**  Still in Migration State
-
 > **Project Status:** Migration Phase  
 > **Target Platform:** MediaTek LinkIt Smart 7688  
 > **OpenWrt Version:** v25.12.5
