@@ -1,6 +1,6 @@
 # Initial Setup – OpenWrt v25.12.5
 
-[← Back to Main README](../README.md)
+[← Back to Main README](./migration.md)
 
 ## 1. Purpose
 
@@ -217,4 +217,4 @@ The script clones the OpenWrt source into a temporary directory and copies it in
 
 **Author:** Amritpal Singh
 
-[← Back to Main README](../README.md)
+[← Back to Main README](./migration.md)

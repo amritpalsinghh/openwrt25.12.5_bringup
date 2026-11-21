@@ -1,1 +1,149 @@
+
 # openwrt25.12.5_bringup
+
+# **Note:**  Still in Migration State
+
+> **Project Status:** Migration Phase  
+> **Target Platform:** MediaTek LinkIt Smart 7688  
+> **OpenWrt Version:** v25.12.5
+
+This project focuses on bringing up and adapting **OpenWrt v25.12.5** for the **MediaTek LinkIt Smart 7688** platform. The work is organized into development phases, with project documentation and automation maintained separately from the OpenWrt source tree.
+
+**Current phase:** The project is currently in the **Migration Phase**.  
+[→ Migration Details](./docs/migration.md)
+
+---
+
+## Table of Contents
+
+1. [Project Overview](#1-project-overview)
+2. [Project Details](#2-project-details)
+3. [Project Structure](#3-project-structure)
+4. [Project Phases](#4-project-phases)
+5. [Documentation Index](#5-documentation-index)
+6. [Build Workspace](#6-build-workspace)
+7. [Project Status](#7-project-status)
+
+## 1. Project Overview
+
+The goal of this project is to bring up OpenWrt v25.12.5 on the MediaTek LinkIt Smart 7688 and establish a maintainable platform for subsequent configuration, customization, firmware building, and validation.
+
+The repository separates the project into three main areas:
+
+- **Documentation** – project details, migration notes, configuration records, and development guides.
+- **Scripts** – automation used to prepare the development environment and OpenWrt source tree.
+- **OpenWrt source** – the source tree and build workspace for the LinkIt Smart 7688 target.
+
+## 2. Project Details
+
+| Item | Details |
+|---|---|
+| Project | `openwrt25.12.5_bringup` |
+| Operating System | OpenWrt |
+| OpenWrt Version | `v25.12.5` |
+| Target Hardware | MediaTek LinkIt Smart 7688 |
+| Target System | `ramips` |
+| Subtarget | `mt76x8` |
+| CPU Architecture | MIPS |
+| Build Host | Ubuntu Linux 24.04.5 |
+| Current Project Phase | Migration |
+
+## 3. Project Structure
+
+```text
+openwrt25.12.5_bringup/
+├── README.md
+├── docs/
+│   ├── migration.md
+│   └── initial_setup.md
+├── scripts/
+│   └── initial_setup.sh
+└── .gitignore   #Empty
+```
+
+| Path | Purpose |
+|---|---|
+| `Main.md` | Project overview, phase status, and documentation index. |
+| `docs/` | Project and feature documentation. |
+| `docs/migration.md` | Migration phase details, activities, and progress. |
+| `docs/initial_setup.md` | Instructions for preparing the host environment and OpenWrt source tree. |
+| `scripts/` | Project automation scripts. |
+| `scripts/initial_setup.sh` | Initial setup automation script. |
+| `linkit/` | OpenWrt source tree and build workspace. |
+
+## 4. Project Phases
+
+The project is organized into the following phases. The migration phase is the current active phase; subsequent phases will be updated as work progresses.
+
+| Phase | Description | Status | Documentation |
+|---|---|---|---|
+| Phase 1 – Initial Setup | Prepare the repository layout, host build environment, OpenWrt source tree, feeds, and initial target configuration. | Available | [Initial Setup](./docs/initial_setup.md) |
+| Phase 2 – Migration | Perform and document the migration work required for the OpenWrt v25.12.5 bring-up. | **In Progress – Current Phase** | [Migration Details](./docs/migration.md) |
+| Phase 3 – Target Configuration | Review and complete target-specific configuration for the LinkIt Smart 7688. | Planned | To be documented |
+| Phase 4 – Build Integration | Configure and build the required OpenWrt image and integrate required components. | Planned | To be documented |
+| Phase 5 – Deployment and Validation | Deploy the generated image and validate boot, connectivity, and platform functionality. | Planned | To be documented |
+
+### Current Phase: Migration
+
+The project is currently focused on migration activities.
+
+Refer to the migration document for the migration scope, steps, decisions, issues, and progress:
+
+**[Open Migration Details →](./docs/migration.md)**
+
+## 5. Documentation Index
+
+Use this index to navigate project documentation.
+
+| No. | Document | Description | Status |
+|---|---|---|---|
+| 1 | [Migration Details](./docs/migration.md) | Current migration phase, migration activities, progress, and related notes. | In Progress |
+| 2 | [Initial Setup](./docs/initial_setup.md) | Clone the parent repository, run the setup script, prepare the OpenWrt source tree, and continue to the build workspace. | Available |
+| 3 | Target Configuration | LinkIt Smart 7688 target and device configuration. | Planned |
+| 4 | Kernel Configuration | Kernel options, drivers, and kernel customization. | Planned |
+| 5 | Package Development | Custom OpenWrt package development and integration. | Planned |
+| 6 | Wi-Fi Configuration | Wireless interface and Wi-Fi mode configuration. | Planned |
+| 7 | Network Configuration | Network interfaces, DHCP, firewall, and routing configuration. | Planned |
+| 8 | Firmware Build | Firmware configuration and build procedure. | Planned |
+| 9 | Firmware Deployment | Firmware deployment and recovery procedure. | Planned |
+| 10 | Testing | Platform and functional validation. | Planned |
+
+## 6. Build Workspace
+
+The OpenWrt source tree is maintained in the root-level `linkit/` directory.
+
+After completing the initial setup, enter the source directory:
+
+```bash
+cd linkit
+```
+
+Open the OpenWrt configuration menu:
+
+```bash
+make menuconfig
+```
+
+Build commands and configuration details should be documented in their respective feature documents as the project progresses.
+
+For the initial environment preparation procedure, see [Initial Setup](./docs/initial_setup.md).
+
+## 7. Project Status
+
+| Area | Status |
+|---|---|
+| Repository and documentation structure | Available |
+| Initial setup automation | Available |
+| OpenWrt v25.12.5 source preparation | Available through setup script |
+| Migration | **In Progress** |
+| Target-specific configuration | Planned / subject to migration results |
+| Build integration | Planned |
+| Deployment and validation | Planned |
+
+Update this file when the active phase changes, and maintain detailed implementation notes in the corresponding document under `docs/`.
+
+---
+
+**Project:** `openwrt25.12.5_bringup`  
+**Target:** MediaTek LinkIt Smart 7688  
+**Author:** Amritpal Singh
