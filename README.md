@@ -58,7 +58,8 @@ openwrt25.12.5_bringup/
 │   └── initial_setup.md
 ├── scripts/
 │   └── initial_setup.sh
-└── .gitignore   #Empty
+└── linkit/
+    └── OpenWrt v25.12.5 source tree
 ```
 
 | Path | Purpose |
