@@ -42,7 +42,7 @@ Options:
 
 ## 4. What the Setup Script Does
 
-The script performs the following operations steps:
+### 4.1 The script performs the following operations steps:
 
 
 1. Update Ubuntu package lists | sudo apt-get update
@@ -64,16 +64,20 @@ The script performs the following operations steps:
 13. Verify OpenWrt top-level build include | test -f /./linkit/include/toplevel.mk
 14. Verify LinkIt Smart 7688 target configuration |  grep -F CONFIG_TARGET_ramips_mt76x8_DEVICE_mediatek_linkit-smart-7688=y ./linkit/.config
 
-	Confirm metadata at last 
-	============================================================
-	       OPENWRT BUILD ENVIRONMENT PREPARATION COMPLETE
-	============================================================
+### 4.2 Confirm metadata at last 
+```bash
+============================================================
+       OPENWRT BUILD ENVIRONMENT PREPARATION COMPLETE
+============================================================
 
-	Parent repository : /home/<user>/<apath to your cloned repo>/
-	OpenWrt source    : /home/<user>/<apath to your cloned repo>/linkit
-	OpenWrt version   : v25.12.5
-	Target            : MediaTek LinkIt Smart 7688
-	Debug mode        : 0
+Parent repository : <parent-repository-path>
+OpenWrt source    : <parent-repository-path>/linkit
+OpenWrt version   : v25.12.5
+Target            : MediaTek LinkIt Smart 7688
+Debug mode        : 0
+
+============================================================
+```
 
 The script preserves an existing valid OpenWrt source tree and an existing `.config`. If `linkit/` contains partial or unknown files but is not a valid OpenWrt source tree, the script stops rather than overwriting those files.
 
