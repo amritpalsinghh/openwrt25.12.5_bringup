@@ -60,15 +60,6 @@ openwrt25.12.5_bringup/
     └── OpenWrt v25.12.5 source tree
 ```
 
-| Path | Purpose |
-|---|---|
-| `Main.md` | Project overview, phase status, and documentation index. |
-| `docs/` | Project and feature documentation. |
-| `docs/migration.md` | Migration phase details, activities, and progress. |
-| `docs/initial_setup.md` | Instructions for preparing the host environment and OpenWrt source tree. |
-| `scripts/` | Project automation scripts. |
-| `scripts/initial_setup.sh` | Initial setup automation script. |
-| `linkit/` | OpenWrt source tree and build workspace. |
 
 ## 4. Project Phases
 
@@ -109,23 +100,23 @@ Use this index to navigate project documentation.
 
 ## 6. Build Workspace
 
-The OpenWrt source tree is maintained in the root-level `linkit/` directory.
+The OpenWrt source tree is in `linkit/`. Board config (`.config`) and pinned `feeds.conf` are tracked. Build caches (`bin/`, `build_dir/`, `dl/`, `staging_dir/`, `feeds/`) are gitignored.
 
-After completing the initial setup, enter the source directory:
+After **cloning this repository** (setup already done on the original machine):
 
 ```bash
 cd linkit
+./scripts/feeds update -a
+./scripts/feeds install -a
+make -j"$(nproc)"
 ```
 
-Open the OpenWrt configuration menu:
+After **first-time setup** on an empty tree, see [Initial Setup](./docs/initial_setup.md), then:
 
 ```bash
+cd linkit
 make menuconfig
 ```
-
-Build commands and configuration details should be documented in their respective feature documents as the project progresses.
-
-For the initial environment preparation procedure, see [Initial Setup](./docs/initial_setup.md).
 
 ## 7. Project Status
 

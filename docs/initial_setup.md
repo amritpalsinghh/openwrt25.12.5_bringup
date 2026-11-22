@@ -25,8 +25,21 @@ Run the sript
 	./initial_setup.sh
 	or 
 	./scripts/initial_setup.sh
-openwrt source code will be in linkit folder at root directory 
-it is ready to build the source code for Smart Linkit 7688 at minimal confiuration
+OpenWrt source will be in the `linkit/` folder at the repository root.
+It is ready to build for LinkIt Smart 7688 at the default board configuration.
+
+### 3.1 After cloning this GitHub repository (setup already done)
+
+`linkit/` source, `.config`, and `feeds.conf` are in git. Feed clones, `dl/`, and build dirs are **not**. After clone:
+
+```bash
+cd linkit
+./scripts/feeds update -a
+./scripts/feeds install -a
+make -j"$(nproc)"
+```
+
+Host packages: from the repository root run `./scripts/initial_setup.sh` (or `--skip-deps` if tools are already installed). The script will see a valid `linkit/` tree and will not overwrite it.
 	
 
 Examples:
@@ -48,12 +61,12 @@ Options:
 1. Update Ubuntu package lists | sudo apt-get update
 
 2. Create or verify LinkIt source directory | mkdir -p /home/amrit/XMF_H/openwrt/rinshu/OpenWrt25.12.5_1/linkit
-3. Clone OpenWrt v25.12.5 into temporary directory | git clone --depth 1 --branch v25.12.5 https://github.com/openwrt/openwrt.git /tmp/tmp.7stD4iUto2/openwrt
+3. Clone OpenWrt v25.12.5 into temporary directory | git clone --depth 1 --branch v25.12.5 https://github.com/openwrt/openwrt.git /tmp/temp.xxxx/openwrt
 4. Verify OpenWrt source tag | git -C /tmp/tmp.7stD4iUto2/openwrt describe --tags --exact-match
 5. Copy OpenWrt source into linkit directory | 
 6.  Create feeds.conf from default configuration | cp ./linkit/feeds.conf.default ./linkit/feeds.conf
 7. Update OpenWrt feeds. | ./linkit/scripts/feeds update -a
-8. Install OpenWrt feeds | ./linikit/scripts/feeds install -aC 
+8. Install OpenWrt feeds | ./linikit/scripts/feeds install -a 
 9. Create initial LinkIt Smart 7688 configuration file .config with content
       CONFIG_TARGET_ramips=y
       CONFIG_TARGET_ramips_mt76x8=y

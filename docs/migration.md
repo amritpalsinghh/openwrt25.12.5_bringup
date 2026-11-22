@@ -1,4 +1,4 @@
-[← Back to Main README](../README.md.md)
+[← Back to Main README](../README.md)
 # OpenWrt – LinkIt Smart 7688
  
 OpenWrt v25.12.5 migration, customization and development for the MediaTek LinkIt Smart 7688 platform.
