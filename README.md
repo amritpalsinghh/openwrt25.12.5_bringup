@@ -53,9 +53,13 @@ openwrt25.12.5_bringup/
 ├── README.md
 ├── docs/
 │   ├── migration.md
-│   └── initial_setup.md
+│   ├── initial_setup.md
+│   └── helloworld_hellocpp.md
 ├── scripts/
 │   └── initial_setup.sh
+├── mypackages/
+│   ├── helloworld/
+│   └── hellocpp/
 └── linkit/
     └── OpenWrt v25.12.5 source tree
 ```
@@ -89,6 +93,7 @@ Use this index to navigate project documentation.
 |---|---|---|---|
 | 1 | [Migration Details](./docs/migration.md) | Current migration phase, migration activities, progress, and related notes. | In Progress |
 | 2 | [Initial Setup](./docs/initial_setup.md) | Clone the parent repository, run the setup script, prepare the OpenWrt source tree, and continue to the build workspace. | Available |
+| 2a | [helloworld / hellocpp](./docs/helloworld_hellocpp.md) | Simple C and C++ apps: build into the image (`=y`) or as APK modules (`=m`). | Available |
 | 3 | Target Configuration | LinkIt Smart 7688 target and device configuration. | Planned |
 | 4 | Kernel Configuration | Kernel options, drivers, and kernel customization. | Planned |
 | 5 | Package Development | Custom OpenWrt package development and integration. | Planned |
