@@ -36,7 +36,8 @@ git-src
 .ccache
 .vscode*
 
-# Keep board config and pinned feeds.conf in the parent git repo
-# so a clone can make without re-running initial_setup.sh.
+# Keep board config, pinned feeds.conf, and the files/ overlay in git.
 !/.config
 !/feeds.conf
+!/files/
+!/files/**

@@ -40,6 +40,7 @@ Individual feature documentation, implementation details and usage instructions 
 |---|---|---|---|
 | Initial Setup | Development environment and source preparation | [initial_setup.md](./initial_setup.md) | Available |
 | helloworld / hellocpp | C and C++ sample apps, image (`=y`) or APK (`=m`) | [helloworld_hellocpp.md](./helloworld_hellocpp.md) | Available |
+| Wireless / network | AP+STA and LAN 192.168.100.1 in source | [wireless_network.md](./wireless_network.md) | Available |
 | Configuration | OpenWrt target and system configuration | [target_configuration.md](./linkit/docs/target_configuration.md) | Planned |
 | Package Development | Custom package development and integration | [package_development.md](./linkit/docs/package_development.md) | Planned |
 | Wi-Fi Configuration | Wireless interface configuration | [wifi_configuration.md](./linkit/docs/wifi_configuration.md) | Planned |

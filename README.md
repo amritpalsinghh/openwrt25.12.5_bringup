@@ -97,8 +97,8 @@ Use this index to navigate project documentation.
 | 3 | Target Configuration | LinkIt Smart 7688 target and device configuration. | Planned |
 | 4 | Kernel Configuration | Kernel options, drivers, and kernel customization. | Planned |
 | 5 | Package Development | Custom OpenWrt package development and integration. | Planned |
-| 6 | Wi-Fi Configuration | Wireless interface and Wi-Fi mode configuration. | Planned |
-| 7 | Network Configuration | Network interfaces, DHCP, firewall, and routing configuration. | Planned |
+| 6 | [Wireless and network](./docs/wireless_network.md) | Bake AP+STA and LAN 192.168.100.1 into the image (no hand-run UCI). | Available |
+| 7 | Network Configuration | Extra interface notes beyond [wireless_network.md](./docs/wireless_network.md). | Planned |
 | 8 | Firmware Build | Firmware configuration and build procedure. | Planned |
 | 9 | Firmware Deployment | Firmware deployment and recovery procedure. | Planned |
 | 10 | Testing | Platform and functional validation. | Planned |

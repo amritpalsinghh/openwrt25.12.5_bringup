@@ -1,0 +1,22 @@
+#!/bin/sh
+# First boot only (deleted after success). Bakes LAN/WAN to match the
+# product UCI without running those commands by hand.
+
+# LAN 192.168.100.1/24 (UCI uses ipaddr + netmask, not CIDR in one option)
+uci -q delete network.lan.ipaddr
+uci -q set network.lan.proto='static'
+uci -q set network.lan.ipaddr='192.168.100.1'
+uci -q set network.lan.netmask='255.255.255.0'
+
+# STA uplink: netifd runs DHCP on wan (replaces: udhcpc -i apcli0 -f -q)
+uci -q set network.wan=interface
+uci -q set network.wan.proto='dhcp'
+uci -q delete network.wan.device
+
+# Drop the mac80211 auto iface if wifi-detect created it
+uci -q delete wireless.default_radio0
+
+uci -q commit network
+uci -q commit wireless
+
+exit 0
