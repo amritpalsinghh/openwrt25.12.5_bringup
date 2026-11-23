@@ -58,8 +58,7 @@ openwrt25.12.5_bringup/
 │   ├── ossdn-test.md
 │   ├── ossdn-test-install.md
 │   ├── ossdn-test-source-changes.md
-│   ├── libwebsockets-disabled.md
-│   └── github-tags.md
+│   └── libwebsockets-disabled.md
 ├── scripts/
 │   └── initial_setup.sh
 └── linkit/

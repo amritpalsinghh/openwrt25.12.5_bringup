@@ -45,7 +45,7 @@ Individual feature documentation, implementation details and usage instructions 
 | ossdn-test runtime | `productinfo` 1201 / empty msg | [ossdn-test.md §7](./ossdn-test.md#7-troubleshooting) | Available |
 | ossdn-test install | APK search, SSH, USB stick, U-Boot USB | [ossdn-test-install.md](./ossdn-test-install.md) | Available |
 | libwebsockets (15.05 copy) | why `Makefile.15.05.disabled`; use packages 4.4.1 | [libwebsockets-disabled.md](./libwebsockets-disabled.md) | Available |
-| GitHub tags | `v0.0.1`–`v0.0.4` + reusable tag commands | [github-tags.md](./github-tags.md) | Available |
+| GitHub tags | `v0.0.1`–`v0.0.4` + `v0.0.5` ossdn-test docs | [github-tags.md](./github-tags.md) | Available |
 | Wireless / network | left as reset | [wireless_network.md](./wireless_network.md) | Left as-is |
 | Configuration | OpenWrt target and system configuration | [target_configuration.md](./linkit/docs/target_configuration.md) | Planned |
 | Package Development | Custom package development and integration | [package_development.md](./linkit/docs/package_development.md) | Planned |
