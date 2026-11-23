@@ -1,6 +1,6 @@
 # ossdn-test
 
-[← Back to Main README](../README.md) · [`.c` / `.h` vs 15.05](./ossdn-test-source-changes.md) · [§7 Troubleshooting](#7-troubleshooting)
+[← Back to Main README](../README.md) · [`.c` / `.h` vs 15.05](./ossdn-test-source-changes.md) · [Install on device](./ossdn-test-install.md) · [§7 Troubleshooting](#7-troubleshooting)
 
 Build and run the 15.05 XMF-H CLI **`ossdn-test`** on OpenWrt **v25.12.5** (LinkIt Smart 7688). This file is only about that binary compiling and running on the device.
 
@@ -115,7 +115,7 @@ ls -l bin/packages/mipsel_24kc/mypackages/ossdntest-*.apk
 file bin/packages/mipsel_24kc/mypackages/ossdntest-*.apk
 ```
 
-Copy and install (OpenWrt 25.12.5 uses **apk**, not opkg):
+The binary is **not** on the board until you install the APK. Search, SSH copy, USB stick, and U-Boot USB: [ossdn-test-install.md](./ossdn-test-install.md).
 
 ```bash
 scp bin/packages/mipsel_24kc/mypackages/ossdntest-*.apk root@192.168.100.1:/tmp/
@@ -230,6 +230,10 @@ make package/ossdn-test/compile V=s
 ```
 
 `ossdntest` is the APK/`PKG_NAME`. `ossdn-test` is the folder under `mypackages/application/`.
+
+### 7.3 `ossdn-test: not found` on the board
+
+Expected: the CLI is an add-on (`=m`), not in squashfs. Find the APK, copy with SSH or USB, `apk add`. Full steps: [ossdn-test-install.md](./ossdn-test-install.md).
 
 ---
 

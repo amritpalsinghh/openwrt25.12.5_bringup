@@ -43,7 +43,9 @@ Individual feature documentation, implementation details and usage instructions 
 | ossdn-test | 15.05 CLI at `linkit/mypackages/application/ossdn-test` | [ossdn-test.md](./ossdn-test.md) | Available |
 | ossdn-test `.c`/`.h` | musl/GCC14 source diffs vs 15.05 | [ossdn-test-source-changes.md](./ossdn-test-source-changes.md) | Available |
 | ossdn-test runtime | `productinfo` 1201 / empty msg | [ossdn-test.md §7](./ossdn-test.md#7-troubleshooting) | Available |
+| ossdn-test install | APK search, SSH, USB stick, U-Boot USB | [ossdn-test-install.md](./ossdn-test-install.md) | Available |
 | libwebsockets (15.05 copy) | why `Makefile.15.05.disabled`; use packages 4.4.1 | [libwebsockets-disabled.md](./libwebsockets-disabled.md) | Available |
+| GitHub tags | `v0.0.1`–`v0.0.4` + reusable tag commands | [github-tags.md](./github-tags.md) | Available |
 | Wireless / network | left as reset | [wireless_network.md](./wireless_network.md) | Left as-is |
 | Configuration | OpenWrt target and system configuration | [target_configuration.md](./linkit/docs/target_configuration.md) | Planned |
 | Package Development | Custom package development and integration | [package_development.md](./linkit/docs/package_development.md) | Planned |
