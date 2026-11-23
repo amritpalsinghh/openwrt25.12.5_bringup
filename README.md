@@ -54,13 +54,21 @@ openwrt25.12.5_bringup/
 ├── docs/
 │   ├── migration.md
 │   ├── initial_setup.md
-│   └── helloworld_hellocpp.md
+│   ├── helloworld_hellocpp.md
+│   ├── ossdn-test.md
+│   ├── ossdn-test-source-changes.md
+│   └── libwebsockets-disabled.md
 ├── scripts/
 │   └── initial_setup.sh
-├── mypackages/
-│   ├── helloworld/
-│   └── hellocpp/
 └── linkit/
+    ├── mypackages/          # the only feed (src-link ../mypackages)
+    │   ├── gcc14-legacy.mk
+    │   ├── application/
+    │   │   ├── helloworld/
+    │   │   ├── hellocpp/
+    │   │   └── ossdn-test/
+    │   ├── libraries/
+    │   └── additional_files/
     └── OpenWrt v25.12.5 source tree
 ```
 

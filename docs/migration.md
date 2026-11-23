@@ -39,8 +39,12 @@ Individual feature documentation, implementation details and usage instructions 
 | Feature | Description | Documentation | Status |
 |---|---|---|---|
 | Initial Setup | Development environment and source preparation | [initial_setup.md](./initial_setup.md) | Available |
-| helloworld / hellocpp | C and C++ sample apps, image (`=y`) or APK (`=m`) | [helloworld_hellocpp.md](./helloworld_hellocpp.md) | Available |
-| Wireless / network | AP+STA and LAN 192.168.100.1 in source | [wireless_network.md](./wireless_network.md) | Available |
+| helloworld / hellocpp | C/C++ samples at `linkit/mypackages/application/` (`=m` APK) | [helloworld_hellocpp.md](./helloworld_hellocpp.md) | Available |
+| ossdn-test | 15.05 CLI at `linkit/mypackages/application/ossdn-test` | [ossdn-test.md](./ossdn-test.md) | Available |
+| ossdn-test `.c`/`.h` | musl/GCC14 source diffs vs 15.05 | [ossdn-test-source-changes.md](./ossdn-test-source-changes.md) | Available |
+| ossdn-test runtime | `productinfo` 1201 / empty msg | [ossdn-test.md §7](./ossdn-test.md#7-troubleshooting) | Available |
+| libwebsockets (15.05 copy) | why `Makefile.15.05.disabled`; use packages 4.4.1 | [libwebsockets-disabled.md](./libwebsockets-disabled.md) | Available |
+| Wireless / network | left as reset | [wireless_network.md](./wireless_network.md) | Left as-is |
 | Configuration | OpenWrt target and system configuration | [target_configuration.md](./linkit/docs/target_configuration.md) | Planned |
 | Package Development | Custom package development and integration | [package_development.md](./linkit/docs/package_development.md) | Planned |
 | Wi-Fi Configuration | Wireless interface configuration | [wifi_configuration.md](./linkit/docs/wifi_configuration.md) | Planned |

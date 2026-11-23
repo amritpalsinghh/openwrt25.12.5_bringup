@@ -1,0 +1,144 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CENB_TOF_NOT_PRESENT	ocm_interface.h	62;"	d
+CENB_TOF_SCANNING_DISABLED	ocm_interface.h	61;"	d
+CENB_TOF_SCANNING_ENABLED	ocm_interface.h	60;"	d
+CSSP_SPACING_100_GHZ_PLAN_A	ocm_interface.h	55;"	d
+CSSP_SPACING_100_GHZ_PLAN_B	ocm_interface.h	56;"	d
+CSSP_SPACING_50_GHZ	ocm_interface.h	54;"	d
+CSSP_SPACING_INVALID	ocm_interface.h	57;"	d
+DISABLE_TOF_SCAN	ocm_interface.h	/^{   DISABLE_TOF_SCAN=0,$/;"	e	enum:__anon4
+EDGE_BOS	ocm_interface.h	/^    EDGE_BOS,          \/\/ <X> 1 : Additional 4x12.5 or 8x6.25 GHz slices at BOS$/;"	e	enum:__anon3
+EDGE_BOS_EOS	ocm_interface.h	/^    EDGE_BOS_EOS,      \/\/ <X> 3 : Additional 4x12.5 or 8x6.25 GHz slices at BOS and EOS$/;"	e	enum:__anon3
+EDGE_BOS_EOS_1	ocm_interface.h	/^    EDGE_BOS_EOS_1,    \/\/ <X> 4 : Additional 1x12.5 or 2x6.25 GHz slices at BOS and 1x6.25 GHz slices EOS$/;"	e	enum:__anon3
+EDGE_BOS_EOS_2	ocm_interface.h	/^    EDGE_BOS_EOS_2     \/\/ <X> 45: Additional 1x12.5 or 1x6.25 GHz slices at BOS and 2x6.25 GHz slices EOS$/;"	e	enum:__anon3
+EDGE_EOS	ocm_interface.h	/^    EDGE_EOS,          \/\/ <X> 2 : Additional 4x12.5 or 8x6.25 GHz slices at EOS$/;"	e	enum:__anon3
+EDGE_NONE	ocm_interface.h	/^{   EDGE_NONE=0,       \/\/ <X> not present$/;"	e	enum:__anon3
+ENABLE_TOF_SCAN	ocm_interface.h	/^    ENABLE_TOF_SCAN=1,$/;"	e	enum:__anon4
+INTEGRATE_2_NM	ocm_interface.h	/^{   INTEGRATE_2_NM = 0,$/;"	e	enum:__anon5
+INTEGRATE_4_NM	ocm_interface.h	/^    INTEGRATE_4_NM,$/;"	e	enum:__anon5
+INTEGRATE_8_NM	ocm_interface.h	/^    INTEGRATE_8_NM$/;"	e	enum:__anon5
+OCM_CHANNEL_PLAN_INVALID	ocm_interface.h	44;"	d
+OCM_COMMAND_SUCCESS	ocm_interface.h	21;"	d
+OCM_COMMUNICATION_ERROR	ocm_interface.h	39;"	d
+OCM_DEINIT_ERROR	ocm_interface.h	43;"	d
+OCM_FW_UPGRADE_FILE_NOT_FOUND	ocm_interface.h	48;"	d
+OCM_HARDWARE_ERROR	ocm_interface.h	29;"	d
+OCM_IC_COMMAND_ERROR	ocm_interface.h	24;"	d
+OCM_INIT_ERROR	ocm_interface.h	42;"	d
+OCM_INSERTION_LOSS_INVALID	ocm_interface.h	45;"	d
+OCM_INTERFACE_H	ocm_interface.h	10;"	d
+OCM_INTIALIZATION_ERROR	ocm_interface.h	30;"	d
+OCM_INVALID_INPUT	ocm_interface.h	50;"	d
+OCM_MEMORY_ALLOCATION_FAILED	ocm_interface.h	49;"	d
+OCM_MINIMUM_PEAK_POWER_INVALID	ocm_interface.h	46;"	d
+OCM_NOT_READY_ERROR	ocm_interface.h	27;"	d
+OCM_NO_RESPONCE_RECEIVED	ocm_interface.h	23;"	d
+OCM_NULL_POINTER	ocm_interface.h	41;"	d
+OCM_PEAK_DETECT_THRESHOLD_INVALID	ocm_interface.h	47;"	d
+OCM_RANGE_ERROR	ocm_interface.h	28;"	d
+OCM_READ_TIMEOUT	ocm_interface.h	40;"	d
+OCM_RESERVED_BYTE_ERROR	ocm_interface.h	31;"	d
+OCM_TOF_DATA_INVALID_ERROR	ocm_interface.h	33;"	d
+OCM_TOF_HIGHTEMP_LIMIT_EXCEED	ocm_interface.h	35;"	d
+OCM_TOF_HW_ERROR	ocm_interface.h	34;"	d
+OCM_TOF_LOWTEMP_LIMIT_EXCEED	ocm_interface.h	36;"	d
+OCM_TOF_NOT_READY	ocm_interface.h	38;"	d
+OCM_TOF_OPTICAL_OVERLOAD	ocm_interface.h	37;"	d
+OCM_UC_COMMAND_ERROR	ocm_interface.h	25;"	d
+OCM_UNSUSED_POSITION_ERROR	ocm_interface.h	32;"	d
+OCM_WRONG_FIRST_BYTE	ocm_interface.h	26;"	d
+RETURN_TOF_SCAN	ocm_interface.h	/^    RETURN_TOF_SCAN=2$/;"	e	enum:__anon4
+SLICE_12_5_GHZ	ocm_interface.h	/^{   SLICE_12_5_GHZ=0,$/;"	e	enum:__anon1
+SLICE_3_125_GHZ	ocm_interface.h	/^    SLICE_3_125_GHZ$/;"	e	enum:__anon1
+SLICE_6_25_GHZ	ocm_interface.h	/^    SLICE_6_25_GHZ,$/;"	e	enum:__anon1
+SPECTRUM_FORMAT_DBM	ocm_interface.h	/^    SPECTRUM_FORMAT_DBM$/;"	e	enum:__anon2
+SPECTRUM_FORMAT_MW	ocm_interface.h	/^{   SPECTRUM_FORMAT_MW=0,$/;"	e	enum:__anon2
+T_CBDI	ocm_interface.h	/^} T_CBDI;$/;"	t	typeref:struct:cbdi
+T_CDDFB	ocm_interface.h	/^} T_CDDFB;$/;"	t	typeref:struct:cddfb
+T_CDDF_CHANNEL	ocm_interface.h	/^} T_CDDF_CHANNEL;$/;"	t	typeref:struct:__anon7
+T_CFCR	ocm_interface.h	/^} T_CFCR;$/;"	t	typeref:struct:cfcr
+T_CFCR_CHANNEL	ocm_interface.h	/^} T_CFCR_CHANNEL;$/;"	t	typeref:struct:__anon6
+T_CGET1	ocm_interface.h	/^} T_CGET1;$/;"	t	typeref:struct:cget1
+T_CGET1_CHANNEL	ocm_interface.h	/^} T_CGET1_CHANNEL;$/;"	t	typeref:struct:__anon8
+T_CGSP1	ocm_interface.h	/^} T_CGSP1;$/;"	t	typeref:struct:cgsp1
+T_CGTP1B	ocm_interface.h	/^} T_CGTP1B;$/;"	t	typeref:struct:cgtp1
+T_CGTP1_CHANNEL	ocm_interface.h	/^} T_CGTP1_CHANNEL;$/;"	t	typeref:struct:__anon9
+T_CSSP	ocm_interface.h	/^} T_CSSP;$/;"	t	typeref:struct:cssp
+T_CSTA0	ocm_interface.h	/^} T_CSTA0;$/;"	t	typeref:struct:csta0
+T_EDGE_BINS	ocm_interface.h	/^} T_EDGE_BINS;$/;"	t	typeref:enum:__anon3
+T_INTEGRATE	ocm_interface.h	/^} T_INTEGRATE;$/;"	t	typeref:enum:__anon5
+T_SLICE_WIDTH	ocm_interface.h	/^} T_SLICE_WIDTH;$/;"	t	typeref:enum:__anon1
+T_SPECTRUM_FORMAT	ocm_interface.h	/^} T_SPECTRUM_FORMAT;$/;"	t	typeref:enum:__anon2
+T_TOFSCAN_MODE	ocm_interface.h	/^} T_TOFSCAN_MODE;$/;"	t	typeref:enum:__anon4
+cbdi	ocm_interface.h	/^typedef struct cbdi$/;"	s
+cddfb	ocm_interface.h	/^typedef struct cddfb$/;"	s
+cfcr	ocm_interface.h	/^typedef struct cfcr$/;"	s
+cget1	ocm_interface.h	/^typedef struct cget1$/;"	s
+cgsp1	ocm_interface.h	/^typedef struct cgsp1$/;"	s
+cgtp1	ocm_interface.h	/^typedef struct cgtp1$/;"	s
+channelFrequency	ocm_interface.h	/^    float     channelFrequency; \/\/ reported in float format THz$/;"	m	struct:__anon7
+channelFrequency	ocm_interface.h	/^    float     channelFrequency; \/\/ reported in float format THz$/;"	m	struct:__anon8
+channelFrequency	ocm_interface.h	/^    float     channelFrequency; \/\/ reported in float format THz$/;"	m	struct:__anon9
+channelFrequency	ocm_interface.h	/^    uint16_t channelFrequency; \/\/ reported in Q8 dBm format$/;"	m	struct:__anon6
+channelPower	ocm_interface.h	/^{   float     channelPower;     \/\/ reported in mW$/;"	m	struct:__anon8
+channelPower	ocm_interface.h	/^{   float     channelPower;     \/\/ reported in mW$/;"	m	struct:__anon9
+channelPower2nm	ocm_interface.h	/^    u_int16_t channelPower2nm;  \/\/ reported in Q8 dBm format$/;"	m	struct:__anon7
+channelPower4nm	ocm_interface.h	/^{   u_int16_t channelPower4nm;  \/\/ reported in Q8 dBm format$/;"	m	struct:__anon7
+channelPowerITU	ocm_interface.h	/^{   uint16_t channelPowerITU;  \/\/ reported in Q8 dBm format$/;"	m	struct:__anon6
+channelPowerPeak	ocm_interface.h	/^    uint16_t channelPowerPeak; \/\/ reported in Q8 dBm format$/;"	m	struct:__anon6
+cssp	ocm_interface.h	/^typedef struct cssp$/;"	s
+csta0	ocm_interface.h	/^typedef struct csta0$/;"	s
+m_aui8_CTMSerialNumber	ocm_interface.h	/^    uint8_t m_aui8_CTMSerialNumber[128];$/;"	m	struct:cbdi
+m_aui8_CTMVendor	ocm_interface.h	/^    uint8_t m_aui8_CTMVendor[128];$/;"	m	struct:cbdi
+m_channel	ocm_interface.h	/^    T_CDDF_CHANNEL m_channel[96];$/;"	m	struct:cddfb
+m_channel	ocm_interface.h	/^    T_CFCR_CHANNEL m_channel[96];$/;"	m	struct:cfcr
+m_channel	ocm_interface.h	/^    T_CGET1_CHANNEL m_channel[96];$/;"	m	struct:cget1
+m_channel	ocm_interface.h	/^    T_CGTP1_CHANNEL m_channel[96];$/;"	m	struct:cgtp1
+m_channelSaturationFlags	ocm_interface.h	/^    u_int32_t      m_channelSaturationFlags[3];$/;"	m	struct:cddfb
+m_channelSaturationFlags	ocm_interface.h	/^    u_int32_t      m_channelSaturationFlags[3];$/;"	m	struct:cgtp1
+m_channels	ocm_interface.h	/^    int             m_channels;                \/\/ Number of channels returned$/;"	m	struct:cget1
+m_channels	ocm_interface.h	/^    int            m_channels;                \/\/ Number of channels returned$/;"	m	struct:cddfb
+m_channels	ocm_interface.h	/^    int            m_channels;                \/\/ Number of channels returned$/;"	m	struct:cfcr
+m_channels	ocm_interface.h	/^    int            m_channels;                \/\/ Number of channels returned$/;"	m	struct:cgtp1
+m_f_ctm_startingFreq	ocm_interface.h	/^    float m_f_ctm_startingFreq;$/;"	m	struct:cssp
+m_f_deviceTemperature	ocm_interface.h	/^{   float m_f_deviceTemperature;$/;"	m	struct:csta0
+m_f_reserved1	ocm_interface.h	/^    float m_f_reserved1;$/;"	m	struct:cbdi
+m_f_reserved2	ocm_interface.h	/^    float m_f_reserved2;$/;"	m	struct:cbdi
+m_f_tofAppliedSBOC	ocm_interface.h	/^    float m_f_tofAppliedSBOC;$/;"	m	struct:cbdi
+m_f_tofAppliedSBTC	ocm_interface.h	/^    float m_f_tofAppliedSBTC;$/;"	m	struct:cbdi
+m_f_tofEndFrequency	ocm_interface.h	/^    float m_f_tofEndFrequency;$/;"	m	struct:cbdi
+m_f_tofInsertionLoss	ocm_interface.h	/^    float m_f_tofInsertionLoss;$/;"	m	struct:cbdi
+m_f_tofMinimumPower	ocm_interface.h	/^    float m_f_tofMinimumPower;$/;"	m	struct:cbdi
+m_f_tofPeakDetectionThresold	ocm_interface.h	/^    float m_f_tofPeakDetectionThresold;$/;"	m	struct:cbdi
+m_f_tofReserved1	ocm_interface.h	/^    float m_f_tofReserved1;$/;"	m	struct:cbdi
+m_f_tofStartFrequency	ocm_interface.h	/^    float m_f_tofStartFrequency;$/;"	m	struct:cbdi
+m_i32_PCBSerialNumber	ocm_interface.h	/^    int32_t m_i32_PCBSerialNumber;$/;"	m	struct:cbdi
+m_peakDetectionFlags	ocm_interface.h	/^    u_int32_t      m_peakDetectionFlags[3];$/;"	m	struct:cddfb
+m_peakDetectionFlags	ocm_interface.h	/^    u_int32_t      m_peakDetectionFlags[3];$/;"	m	struct:cfcr
+m_peakDetectionFlags	ocm_interface.h	/^    u_int32_t      m_peakDetectionFlags[3];$/;"	m	struct:cgtp1
+m_peakDetectionFlags	ocm_interface.h	/^{   u_int32_t       m_peakDetectionFlags[3];$/;"	m	struct:cget1
+m_peakTypeFlags	ocm_interface.h	/^    u_int32_t      m_peakTypeFlags[3];$/;"	m	struct:cddfb
+m_peakTypeFlags	ocm_interface.h	/^    u_int32_t      m_peakTypeFlags[3];$/;"	m	struct:cfcr
+m_scanCounter	ocm_interface.h	/^    uint32_t m_scanCounter;  \/\/ scan counter if the edge bin parameter was used. 0 otherwise.$/;"	m	struct:cgsp1
+m_slicePower	ocm_interface.h	/^    float   *m_slicePower;   \/\/ power value at each slice in mW or dBm. Maximium limit is (TODO: Specify max number of slices)$/;"	m	struct:cgsp1
+m_sliceWidth	ocm_interface.h	/^    float    m_sliceWidth;   \/\/ width of each slice$/;"	m	struct:cgsp1
+m_slices	ocm_interface.h	/^    int 	 m_slices;       \/\/ number of slices returned$/;"	m	struct:cgsp1
+m_startFreq	ocm_interface.h	/^    float    m_startFreq;    \/\/ frequency or the first slice$/;"	m	struct:cgsp1
+m_totalPower	ocm_interface.h	/^{   float          m_totalPower;              \/\/ total power in mW$/;"	m	struct:cddfb
+m_totalPower	ocm_interface.h	/^{   float          m_totalPower;              \/\/ total power in mW$/;"	m	struct:cfcr
+m_totalPower	ocm_interface.h	/^{   float          m_totalPower;              \/\/ total power in mW$/;"	m	struct:cgtp1
+m_totalPower	ocm_interface.h	/^{   float    m_totalPower;   \/\/ total power in mW$/;"	m	struct:cgsp1
+m_ui16_crc16	ocm_interface.h	/^    uint16_t m_ui16_crc16;$/;"	m	struct:cbdi
+m_ui32_CTMDataCode	ocm_interface.h	/^    int32_t m_ui32_CTMDataCode;$/;"	m	struct:cbdi
+m_ui32_CTMFirmwareVersion	ocm_interface.h	/^    uint32_t m_ui32_CTMFirmwareVersion;$/;"	m	struct:cbdi
+m_ui32_CTMModelNumber	ocm_interface.h	/^{   uint32_t m_ui32_CTMModelNumber;$/;"	m	struct:cbdi
+m_ui32_CTMRevision	ocm_interface.h	/^    uint32_t m_ui32_CTMRevision;$/;"	m	struct:cbdi
+m_ui32_ctmChannalPlan	ocm_interface.h	/^{   uint32_t m_ui32_ctmChannalPlan;$/;"	m	struct:cssp
+m_ui32_statusWord	ocm_interface.h	/^    uint32_t m_ui32_statusWord;$/;"	m	struct:csta0
+m_ui32_tofRevision	ocm_interface.h	/^    uint32_t m_ui32_tofRevision;$/;"	m	struct:cbdi
+m_ui32_tofSerialNumber	ocm_interface.h	/^    int32_t m_ui32_tofSerialNumber;$/;"	m	struct:cbdi

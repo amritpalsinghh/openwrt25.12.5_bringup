@@ -1,11 +1,12 @@
-# build hellocpp executable when user executes "make"
+all: hellocpp
+
 hellocpp: hellocpp.o
 	$(CXX) $(LDFLAGS) hellocpp.o -o hellocpp
 
 hellocpp.o: hellocpp.cpp
-	$(CXX) $(CXXLAGS) -c hellocpp.cpp
+	$(CXX) $(CXXFLAGS) -c -o hellocpp.o hellocpp.cpp
 
-# remove object files and executable when user executes "make clean"
 clean:
-	rm *.o hellocpp
+	rm -f hellocpp hellocpp.o
 
+.PHONY: all clean

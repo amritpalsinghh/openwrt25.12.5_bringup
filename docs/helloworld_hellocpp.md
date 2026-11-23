@@ -9,7 +9,7 @@ Simple C (`helloworld`) and C++ (`hellocpp`) userspace programs for OpenWrt **v2
 
 Do **not** mix `=y` and `=m` for the same package in one `.config`. Pick one mode, run `make defconfig`, then build.
 
-**Work directory:** `openwrt25.12.5_from_scretch/linkit`
+**Work directory:** `openwrt25.12.5_bringup/linkit`
 
 ---
 
@@ -17,13 +17,17 @@ Do **not** mix `=y` and `=m` for the same package in one `.config`. Pick one mod
 
 | Package | Language | Source | Install path on device |
 | --- | --- | --- | --- |
-| `helloworld` | C | `mypackages/helloworld/` | `/usr/bin/helloworld` |
-| `hellocpp` | C++ | `mypackages/hellocpp/` | `/usr/bin/hellocpp` |
+| `helloworld` | C | `linkit/mypackages/application/helloworld/` | `/usr/bin/helloworld` |
+| `hellocpp` | C++ | `linkit/mypackages/application/hellocpp/` | `/usr/bin/hellocpp` |
+
+They live next to `application/ossdn-test`. There is no `linkit/migrations` directory. The feed still scans `mypackages/` recursively, so one extra `application/` level does not need Makefile edits.
+
+**Current `.config`:** `helloworld=m`, `hellocpp=m` (APK only, not in the image). Use `=y` if you want them in squashfs (section 4).
 
 Feed line (already in `linkit/feeds.conf`; relative so a clone works):
 
 ```
-src-link mypackages ../../mypackages
+src-link mypackages ../mypackages
 ```
 
 `hellocpp` depends on **`libstdcpp`**. That is the only extra library. `make defconfig` pulls it in.
@@ -35,7 +39,7 @@ src-link mypackages ../../mypackages
 From `linkit/` (after a git clone, also run this — `feeds/` is gitignored):
 
 ```bash
-cd /home/amrit/XMF_H/openwrt/openwrt25.12.5_from_scretch/linkit
+cd /home/amrit/XMF_H/openwrt/openwrt25.12.5_bringup/linkit
 ./scripts/feeds update mypackages
 ./scripts/feeds install helloworld hellocpp
 ```
@@ -43,7 +47,9 @@ cd /home/amrit/XMF_H/openwrt/openwrt25.12.5_from_scretch/linkit
 Check:
 
 ```bash
-ls -l feeds/mypackages/helloworld feeds/mypackages/hellocpp
+ls -l feeds/mypackages/application/helloworld feeds/mypackages/application/hellocpp
+ls -l package/feeds/mypackages/helloworld package/feeds/mypackages/hellocpp
+# -> .../feeds/mypackages/application/helloworld
 grep 'Package/helloworld' package/feeds/mypackages/helloworld/Makefile
 ```
 
@@ -78,7 +84,7 @@ The programs are copied into the rootfs. After flash they are on the device imme
 ### 4.1 Enable
 
 ```bash
-cd /home/amrit/XMF_H/openwrt/openwrt25.12.5_from_scretch/linkit
+cd /home/amrit/XMF_H/openwrt/openwrt25.12.5_bringup/linkit
 ```
 
 Append (or set in `make menuconfig` → Utilities):
@@ -147,7 +153,7 @@ OpenWrt compiles the package and writes an **APK**. It is **not** installed into
 If you previously set `=y`, change those lines to `=m` (do not leave both).
 
 ```bash
-cd /home/amrit/XMF_H/openwrt/openwrt25.12.5_from_scretch/linkit
+cd /home/amrit/XMF_H/openwrt/openwrt25.12.5_bringup/linkit
 sed -i 's/^CONFIG_PACKAGE_helloworld=y/CONFIG_PACKAGE_helloworld=m/' .config
 sed -i 's/^CONFIG_PACKAGE_hellocpp=y/CONFIG_PACKAGE_hellocpp=m/' .config
 # if the symbols are missing:
@@ -238,7 +244,7 @@ Save, then `make defconfig`.
 | Symptom | Fix |
 | --- | --- |
 | Package not in menuconfig | `./scripts/feeds update mypackages && ./scripts/feeds install helloworld hellocpp` |
-| `src-link` fails | From `linkit/`, `ls ../../mypackages/helloworld/Makefile` must exist |
+| `src-link` fails | From `linkit/`, `ls mypackages/application/helloworld/Makefile` must exist |
 | Recipe “missing separator” | Package Makefiles need **tabs**, not spaces |
 | `hellocpp` link errors | `DEPENDS:=+libstdcpp` is already in the Makefile; run `make defconfig` |
 | `apk` not found on device | You are on 15.05 (opkg). This tree is 25.12.5 apk |

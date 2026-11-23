@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>ii-vi-photonics :: Module</title>
+	<script type="text/javascript" src="custom/js/jquery-latest.js"></script>
+	<script src="custom/js/jsontocsv.js"></script>
+	<script src="custom/js/timer.js"></script>
+    <!-- CSS  -->
+	<link href="custom/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="custom/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+<body>
+    <ul id="slide-out" class="open side-nav custom-sidebar">
+        <li class="red_box valign-wrapper admin-name">
+            <span style="font-size: x-large; font-weight: bold; margin-left: 30%;">XMF-H</span>
+        </li>
+		<li><input type="text" id="ipaddr" style="display: none;"></li>
+		<li>&emsp;&emsp;&emsp;<button id="network_button" data-activates="slide-out" class="btn dark-btn button-collapse1" onclick="do_network_settings();openNav(0);">Network Settings</button></li>
+ 		<li>&emsp;&emsp;&emsp;<button id="custom_button" data-activates="slide-out" class="btn dark-btn button-collapse1" onclick="do_custom_settings();openNav(0);">Communication</button></li>
+
+	</ul>
+	<div id = "main">
+    <header class="valign-wrapper">
+        <div class="valign title-wrapper">
+            <a href="#" id="sidebar_menu_toggle" data-activates="slide-out" class="button-collapse menu-btn">
+                <i onclick="openNav(1)" class="material-icons">menu</i>
+            </a>
+            <h5 class="main-title">
+                <img src="custom/images/logo.png" alt="">
+            </h5>
+        </div>
+            <a href="http://www.ii-vi-photonics.com/" class="top-about-link" target="_blank">About Us</a>
+	</header>
+
+    <main>
+		<div id= "div-communication" style="width: 275px; margin-left: 20px; text-align: left; display: none;">
+			
+			<p style="margin-top: 20px;text-align: center;">SELECT INSTRUMENT</p>
+			<select id="instrument" class="materialSelect" onchange=clearValue()>
+			<option disabled selected value>--Select Instrument--</option>
+			<option value="otdr">OTDR</option>
+			<option value="osa">OSA</option>
+			<option value="occ">OCC</option>
+			<option value="sfp">SFP</option>
+			<option value="other">OTHER</option></select>
+			<p>&nbsp;&nbsp;&nbsp;SELECT COMMAND</p>
+			<select id="mySelect" class="materialSelect" onchange=clearValue()>
+				<option value="ver" disabled>--Select Command--</option>
+				</select>
+	
+			</br></br>
+			<button id="submitButton" class="btn dark-btn" onclick="getResponse()" hidden>Submit</button>
+		</div>
+			<p id="res_area" style="margin-top: 30px; margin-left: 20px; text-align: left;" hidden></p>
+			<p id="app"></p>
+	</div>
+    </main>
+
+	<script type="text/javascript" src="/build/en.app.js" charset="utf-8"></script>
+    <script src="custom/js/jquery-1.11.2.min.js"></script>
+	<script src="custom/js/materialize.min.js"></script>
+	<script src="custom/js/index.js"></script>
+	<script>
+		$(function() {
+
+			// initialize
+			$('.materialSelect').material_select();
+			
+			// setup listener for custom event to re-initialize on change
+			$('.materialSelect').on('contentChanged', function() {
+				$(this).material_select();
+			});
+			
+			$("#instrument").change(function()
+			{
+				var CommandText;
+				var CommandValue;
+				var otdrCommandTextLength;
+			
+				// add new value
+				if($(this).val() == "otdr"){
+					$('input[name="mode"]').removeAttr( "disabled" );
+					$("#mySelect").empty();
+					CommandText =  ['OTDR On', 'OTDR Ver', 'OTDR Params', 'OTDR Status', 'OTDR Run', 'OTDR Dump Trace', 'OTDR Event', 'OTDR Off', 'OTDR Remove Lock (Use only if locked due to timeout)'];
+					CommandValue =  ['OTDR_ON', 'ver', 'otdr_get_params', 'otdr_status', 'otdr_run', 'otdr_dump_trace', 'otdr_dump_event', 'OTDR_OFF', 'OTDR_Deinit'];
+				}
+				else if($(this).val() == "osa"){
+					$("#mySelect").empty();
+					CommandText =  ['PWR_on', 'PWR_off', 'CGTP1', 'CTM_reset', 'OSA Remove Lock (Use only if locked due to timeout)'];
+					CommandValue = ['PWR_on', 'PWR_off', 'CGTP1', 'CTM_reset', 'OCM_Deinit'];
+					$('input[name="mode"]').attr('disabled', 'disabled');
+				}
+				else if($(this).val() == "occ"){
+					$("#mySelect").empty();
+					CommandText =  ['OCC'];
+					CommandValue =  ['OCC'];
+					$('input[name="mode"]').attr('disabled', 'disabled');
+				}
+				else if($(this).val() == "sfp"){
+					$("#mySelect").empty();
+					CommandText =  [ 'SFP'];
+					CommandValue = [ 'SFP'];
+					$('input[name="mode"]').attr('disabled', 'disabled');
+				}
+				else if($(this).val() == "other"){
+					$("#mySelect").empty();
+					CommandText =  [ 'ADC128D818'];
+					CommandValue = [ 'ADC128D818'];
+					$('input[name="mode"]').attr('disabled', 'disabled');
+				}
+				else{
+					console.log("Invalid Instrument", $(this).val())
+					return false;
+				}
+				CommandTextLength = CommandText.length;
+				for (i = 0; i < CommandTextLength; i++) {
+					var $newOpt = $("<option>").attr("value",CommandValue[i]).text(CommandText[i])
+					$("#mySelect").append($newOpt);
+				}
+				// fire custom event anytime you've updated select
+				$("#mySelect").trigger('contentChanged');
+				});
+			
+				// update function for demo purposes
+				$("#submitButton").click(function() {
+			
+				});	
+			
+			});
+		</script>
+
+
+</body>
+</html>

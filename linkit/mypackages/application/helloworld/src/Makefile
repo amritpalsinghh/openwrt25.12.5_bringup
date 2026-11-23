@@ -1,11 +1,12 @@
-# build helloworld executable when user executes "make"
+all: helloworld
+
 helloworld: helloworld.o
 	$(CC) $(LDFLAGS) helloworld.o -o helloworld
 
 helloworld.o: helloworld.c
-	$(CC) $(CFLAGS) -c helloworld.c
+	$(CC) $(CFLAGS) -c -o helloworld.o helloworld.c
 
-# remove object files and executable when user executes "make clean"
 clean:
-	rm *.o helloworld
+	rm -f helloworld helloworld.o
 
+.PHONY: all clean
