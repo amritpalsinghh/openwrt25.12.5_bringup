@@ -1,0 +1,175 @@
+#!/bin/sh /etc/rc.common
+# XMF-H boot init (15.05 layout). Bringup differences vs legacy:
+# - Do not exit if otdr_emu is missing (15.05 did; that skipped boottimeproductinfo).
+# - Do not start wifiwait.sh (network left reset).
+# - Do not run imageflash.sh (writes U-Boot / golden; blobs not on this image).
+# - Skip missing gaugeSet / flashers / pwrmgt daemon so productinfo still runs.
+
+START=99
+STOP=30
+
+OTDR_EMU=/etc/init.d/otdr_emu.sh
+POWERMGT_DAEMONCHKSCRIPT=/etc/pwrmgt_daemonstchk
+POWERMGT_DAEMONSCRIPT=/etc/init.d/powermgt_daemon
+WIFI_STALLSCRIPT=/usr/lib/xmfh/wifiwait.sh
+IMAGE_SCRIPT=/usr/lib/xmfh/imageflash.sh
+STOP_LED_ANIMATION=/root/LED_STOP_ANIMATION
+
+run_ossdn() {
+        if command -v ossdn-test >/dev/null 2>&1; then
+                ossdn-test "$@"
+        else
+                echo "ossdn-test not installed; skip: ossdn-test $*" > /dev/console
+                return 127
+        fi
+}
+
+start() {
+        start=`date +%s`
+
+        #Create flag file HW rev 1.1 if value in EEPROM indicates 1.1
+        run_ossdn hwrev
+
+        ##### Export  GPIO0 ##########
+        echo 0 >/sys/class/gpio/export 2>/dev/null || true
+        echo out >/sys/class/gpio/gpio0/direction 2>/dev/null || true
+        echo 0 >/sys/class/gpio/gpio0/value 2>/dev/null || true
+        echo 1 >/sys/class/gpio/gpio0/value 2>/dev/null || true
+
+        #Check SW3_CHECK
+        run_ossdn sw3_check
+
+        #If Hw Rev. 1.1 then Intialize the IO_EXP2 for kl02
+        run_ossdn IO_EXP2 kl02
+
+        ###### Perform PwrMgtMCU FW Upgrade during boot up, only if file is available in /root/MCU/*.bin #####
+        if [ -x /www/cgi-bin/PwrMgtMCU_upgrade.sh ]; then
+                sh /www/cgi-bin/PwrMgtMCU_upgrade.sh
+        fi
+
+        #Check PwrMgtSlave Devices
+        run_ossdn fslslavechk  > /dev/console
+
+        #If Hw Rev. 1.1 then Intialize the IO_EXP2 for powr607
+        Output=`run_ossdn IO_EXP2 powr607`
+        if [ "$Output" = "0" ]
+        then
+        ###### Perform Powr607 FW Upgrade during boot up, only if file is available #####
+                if [ -x /www/cgi-bin/Powr607_upgrade.sh ]; then
+                        sh /www/cgi-bin/Powr607_upgrade.sh
+                fi
+        fi
+
+        ##### Initialize instruments and additionally IO expander 2 if it is HW rev 1.1 ##########
+        run_ossdn op_sw_en
+
+        ##### STOP LED ANIMATION ##########
+        if [ -f $STOP_LED_ANIMATION ]
+        then
+            run_ossdn led stop_animation
+            rm $STOP_LED_ANIMATION
+        fi
+
+        ################################
+        # Start the pwrmgt_daemonstchk #
+        ################################
+        if [ -x "$POWERMGT_DAEMONCHKSCRIPT" ]; then
+                result=`ps | grep -i pwrmgt_daemonstchk | grep -v "grep" | wc -l`
+                if [ $result -le 0 ]
+                then
+                        $POWERMGT_DAEMONCHKSCRIPT > /dev/null 2>&1 &
+                fi
+        else
+                echo "pwrmgt_daemonstchk not installed; skip" > /dev/console
+        fi
+
+        ##### Export the power button GPIO ##########
+        echo 14 >/sys/class/gpio/export 2>/dev/null || true
+        echo in >/sys/class/gpio/gpio14/direction 2>/dev/null || true
+        echo both >/sys/class/gpio/gpio14/edge 2>/dev/null || true
+
+        ##### Export  GPIO17 and Set it's value to 1 ##########
+        echo 17 >/sys/class/gpio/export 2>/dev/null || true
+        echo out >/sys/class/gpio/gpio17/direction 2>/dev/null || true
+        echo 1 >/sys/class/gpio/gpio17/value 2>/dev/null || true
+
+        ############################
+        #   Start the OTDR EMU     #
+        ############################
+        # 15.05: test -x $OTDR_EMU || exit 0  — that aborted before productinfo.
+        if [ -x "$OTDR_EMU" ]; then
+                OTDR_EMU_PID=`pidof otdr_emu`
+                if [ $? != 0 ]
+                then
+                  echo "otdr_emu is not running" > /dev/console
+                  $OTDR_EMU start
+                else
+                  echo "otdr_emu service running.Restarting it" > /dev/console
+                  $OTDR_EMU stop
+                  $OTDR_EMU start
+                fi
+                sleep 4
+        else
+                echo "otdr_emu not installed; skip (no musl sources)" > /dev/console
+        fi
+
+        ##### To create blank product information /tmp/product_info.json File  ##########
+        echo "{\"XMFH\":{\"Firmware Ver\":\"\",\"Hardware Rev\":\"\",\"Freescale Ver\":\"\",\"Freescale Package\":\"\",\"Serial Number\":\"\",\"OTDR\":{\"Firmware Ver\":\"\",\"Emulator Ver\": \"\",\"FPGA Ver\": \"\"},\"OCM\":{\"Firmware Ver\":\"\"}}}" > /tmp/product_info.json
+
+        ##### To make i2c slave enter correct mode and enable 4 gauge settings (PF, LF, FET, GAUGE) ##########
+        if [ -x /root/fuelgauge_flags/gaugeSet ]; then
+                /root/fuelgauge_flags/gaugeSet enable4 > /dev/console
+        else
+                echo "gaugeSet not installed; skip" > /dev/console
+        fi
+        ubus call system watchdog '{"frequency":3}' >/dev/null 2>&1 || true
+
+        # wifiwait.sh not started: network stack left reset.
+
+        sleep 3
+
+        ##### To update product information /tmp/product_info.json File based on responses from instruments  ##########
+        run_ossdn boottimeproductinfo
+
+        run_ossdn power_off_otdr
+
+        #flag file to use for gatekeeper in OTDR and OCM init API
+        touch /tmp/otdr_init_progress & sleep 31 && rm /tmp/otdr_init_progress &
+        touch /tmp/ocm_init_progress & sleep 16 && rm /tmp/ocm_init_progress &
+
+        # imageflash.sh not started: would write U-Boot / golden.
+
+        sleep 1
+        if [ -x /root/fuelgauge_flags/gaugeSet ]; then
+                /root/fuelgauge_flags/gaugeSet charger configCheck > /dev/console
+        fi
+        echo 0 > /tmp/external_OTDR.TXT
+        end=`date +%s`
+        echo XMF-H init script completed. Execution time was `expr $end - $start` seconds. > /dev/console
+}
+
+
+stop(){
+
+        ################################
+        # Stop the pwrmgt_daemonstchk  #
+        ################################
+        echo "Stopping pwrmgt_daemonstchk script..."
+        killall  pwrmgt_daemonstchk > /dev/null 2>&1
+
+        ##############################
+        #   Stop the pwrmgt_daemon   #
+        ##############################
+        if [ -x "$POWERMGT_DAEMONSCRIPT" ]; then
+                $POWERMGT_DAEMONSCRIPT stop
+        fi
+
+        ###########################
+        #    Stop the OTDR EMU    #
+        ###########################
+        if [ -x "$OTDR_EMU" ]; then
+                $OTDR_EMU stop
+        fi
+
+        echo "xmf-h init script Stop operation completed..."
+}

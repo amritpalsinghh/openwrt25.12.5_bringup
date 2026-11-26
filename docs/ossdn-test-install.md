@@ -134,9 +134,20 @@ ossdn-test
 umount /mnt/usb
 ```
 
-If `ls /dev/sd*` is empty, the image likely has **no USB storage** (`kmod-usb-storage` / `kmod-fs-vfat` are unset on this bringup `.config`). Then the stick cannot be mounted. Use section 6, or rebuild the image with those kmods (and/or `ossdntest=y`) and flash that image.
+Bringup `.config` now has USB mass-storage + VFAT **in the next image**:
 
-`mount: unknown filesystem type 'vfat'` means the same: `kmod-fs-vfat` is not in the running image.
+```
+CONFIG_PACKAGE_kmod-usb-core=y
+CONFIG_PACKAGE_kmod-usb-storage=y
+CONFIG_PACKAGE_kmod-scsi-core=y
+CONFIG_PACKAGE_kmod-fs-vfat=y
+```
+
+`make defconfig` also selected `kmod-nls-cp437` and `kmod-nls-iso8859-1` (VFAT needs those). USB host (`kmod-usb2` / ehci / ohci) was already `=y`.
+
+Kernel modules only appear after a **new sysupgrade** of that image. The board you already flashed still has the old kmods: empty `/dev/sd*` or `unknown filesystem type 'vfat'` until you flash. Do not `apk add` a kmod from a different kernel.
+
+Same stick copy works for `xmfh-init-script-*.apk`.
 
 ---
 
@@ -190,7 +201,7 @@ apk info ossdntest
 | `ossdn-test: not found` | Normal — APK not in image. Section 1 then 3 or 5. |
 | SSH works | `scp` APK → `apk add --allow-untrusted` |
 | SSH dead, serial works, USB stick mounts | Copy APK to FAT stick → mount → `apk add` |
-| SSH dead, USB stick not seen | Serial + section 6 (new sysupgrade), or enable USB storage kmods in a new image |
+| SSH dead, USB stick not seen | Flash an image that includes USB storage/VFAT kmods (now `=y` in `.config`), then section 5 |
 | Want it in every flash | `CONFIG_PACKAGE_ossdntest=y`, rebuild, sysupgrade |
 
 ---

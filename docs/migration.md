@@ -24,12 +24,14 @@ It covers environment setup, system configuration, package development, networki
 
 ## 2. Migration Workflow
 
-The overall development and migration process follows these phases:
+The overall development and migration process follows these phases ([full write-up](./project-phases.md)):
 
-1. **Initial Setup** – Setup initial makeable/buildable setup. [← Refer to Intial Setup Script](./initial_setup.md)
-2. Make/build it and update the .gitignore file
-3. Network Stack update
-4. So on ... (update soon... )
+1. **OpenWrt 25.12.5 setup** — [initial_setup.md](./initial_setup.md)
+2. **helloworld / hellocpp modules** — [helloworld_hellocpp.md](./helloworld_hellocpp.md)
+3. **ossdn-test enable** — [ossdn-test.md](./ossdn-test.md)
+4. **ossdn-test full functionality** (current; discussion) — [project-phases.md](./project-phases.md)
+
+Network / Wi-Fi is left as reset.
 
 
 ## 3. Feature Index
@@ -42,10 +44,13 @@ Individual feature documentation, implementation details and usage instructions 
 | helloworld / hellocpp | C/C++ samples at `linkit/mypackages/application/` (`=m` APK) | [helloworld_hellocpp.md](./helloworld_hellocpp.md) | Available |
 | ossdn-test | 15.05 CLI at `linkit/mypackages/application/ossdn-test` | [ossdn-test.md](./ossdn-test.md) | Available |
 | ossdn-test `.c`/`.h` | musl/GCC14 source diffs vs 15.05 | [ossdn-test-source-changes.md](./ossdn-test-source-changes.md) | Available |
+| ossdn-test test plan | can PASS now vs cannot yet; steps and deps | [ossdn-test-testplan.md](./ossdn-test-testplan.md) | Available |
+| ossdn-test troubleshooting | one issue at a time (issue 1: productinfo 1201) | [ossdn-test-troubleshooting.md](./ossdn-test-troubleshooting.md) | Available |
 | ossdn-test runtime | `productinfo` 1201 / empty msg | [ossdn-test.md §7](./ossdn-test.md#7-troubleshooting) | Available |
 | ossdn-test install | APK search, SSH, USB stick, U-Boot USB | [ossdn-test-install.md](./ossdn-test-install.md) | Available |
 | libwebsockets (15.05 copy) | why `Makefile.15.05.disabled`; use packages 4.4.1 | [libwebsockets-disabled.md](./libwebsockets-disabled.md) | Available |
 | GitHub tags | `v0.0.1`–`v0.0.4` + `v0.0.5` ossdn-test docs | [github-tags.md](./github-tags.md) | Available |
+| Project phases 1–4 | Setup, hellos, ossdn-test enable, module discussion | [project-phases.md](./project-phases.md) | Phase 4 current |
 | Wireless / network | left as reset | [wireless_network.md](./wireless_network.md) | Left as-is |
 | Configuration | OpenWrt target and system configuration | [target_configuration.md](./linkit/docs/target_configuration.md) | Planned |
 | Package Development | Custom package development and integration | [package_development.md](./linkit/docs/package_development.md) | Planned |

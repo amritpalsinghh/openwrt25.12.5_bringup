@@ -1,14 +1,14 @@
 
 # openwrt25.12.5_bringup
 
-> **Project Status:** Migration Phase  
+> **Project Status:** Phase 4 — auto productinfo (`xmfh-init-script`)  
 > **Target Platform:** MediaTek LinkIt Smart 7688  
 > **OpenWrt Version:** v25.12.5
 
 This project focuses on bringing up and adapting **OpenWrt v25.12.5** for the **MediaTek LinkIt Smart 7688** platform. The work is organized into development phases, with project documentation and automation maintained separately from the OpenWrt source tree.
 
-**Current phase:** The project is currently in the **Migration Phase**.  
-[→ Migration Details](./docs/migration.md)
+**Current phase:** **4** — auto `productinfo` after reboot via `xmfh-init-script`.  
+[→ Project phases](./docs/project-phases.md)
 
 ---
 
@@ -44,7 +44,7 @@ The repository separates the project into three main areas:
 | Subtarget | `mt76x8` |
 | CPU Architecture | MIPS |
 | Build Host | Ubuntu Linux 24.04.5 |
-| Current Project Phase | Migration |
+| Current Project Phase | 4 — ossdn-test modules (discussion) |
 
 ## 3. Project Structure
 
@@ -58,7 +58,11 @@ openwrt25.12.5_bringup/
 │   ├── ossdn-test.md
 │   ├── ossdn-test-install.md
 │   ├── ossdn-test-source-changes.md
-│   └── libwebsockets-disabled.md
+│   ├── ossdn-test-testplan.md
+│   ├── ossdn-test-troubleshooting.md
+│   ├── libwebsockets-disabled.md
+│   ├── github-tags.md
+│   └── project-phases.md
 ├── scripts/
 │   └── initial_setup.sh
 └── linkit/
@@ -67,7 +71,8 @@ openwrt25.12.5_bringup/
     │   ├── application/
     │   │   ├── helloworld/
     │   │   ├── hellocpp/
-    │   │   └── ossdn-test/
+    │   │   ├── ossdn-test/
+    │   │   └── xmfh-init-script/
     │   ├── libraries/
     │   └── additional_files/
     └── OpenWrt v25.12.5 source tree
@@ -76,23 +81,22 @@ openwrt25.12.5_bringup/
 
 ## 4. Project Phases
 
-The project is organized into the following phases. The migration phase is the current active phase; subsequent phases will be updated as work progresses.
+Product work is four phases. Aim: 15.05 functionality on OpenWrt v25.12.5. Full write-up: [project-phases.md](./docs/project-phases.md).
 
 | Phase | Description | Status | Documentation |
 |---|---|---|---|
-| Phase 1 – Initial Setup | Prepare the repository layout, host build environment, OpenWrt source tree, feeds, and initial target configuration. | Available | [Initial Setup](./docs/initial_setup.md) |
-| Phase 2 – Migration | Perform and document the migration work required for the OpenWrt v25.12.5 bring-up. | **In Progress – Current Phase** | [Migration Details](./docs/migration.md) |
-| Phase 3 – Target Configuration | Review and complete target-specific configuration for the LinkIt Smart 7688. | Planned | To be documented |
-| Phase 4 – Build Integration | Configure and build the required OpenWrt image and integrate required components. | Planned | To be documented |
-| Phase 5 – Deployment and Validation | Deploy the generated image and validate boot, connectivity, and platform functionality. | Planned | To be documented |
+| Phase 1 – OpenWrt 25.12.5 setup | Host, `linkit/` tree, feeds, board config, first buildable image | Done | [Initial Setup](./docs/initial_setup.md) |
+| Phase 2 – helloworld / hellocpp | C and C++ sample apps as APK modules | Done | [helloworld_hellocpp.md](./docs/helloworld_hellocpp.md) |
+| Phase 3 – ossdn-test enable | Product CLI compiles and runs (musl); min libraries | Done | [ossdn-test.md](./docs/ossdn-test.md) |
+| Phase 4 – ossdn-test full functionality | CLI depends on other 15.05 modules (init, power MCU, gauge, emu, …) | **Current** — `xmfh-init-script` for auto `productinfo` | [project-phases.md](./docs/project-phases.md), [troubleshooting](./docs/ossdn-test-troubleshooting.md) |
 
-### Current Phase: Migration
+Network / Wi-Fi is left as reset (not phase 4).
 
-The project is currently focused on migration activities.
+### Current Phase: 4 — ossdn-test modules
 
-Refer to the migration document for the migration scope, steps, decisions, issues, and progress:
+The CLI from phase 3 starts. First companion: `xmfh-init-script` so `productinfo` works after reboot. Remaining modules (power daemon, gauge, emu) are later.
 
-**[Open Migration Details →](./docs/migration.md)**
+**[Open project phases →](./docs/project-phases.md)** · **[Troubleshooting issue 1 →](./docs/ossdn-test-troubleshooting.md)**
 
 ## 5. Documentation Index
 
@@ -100,14 +104,18 @@ Use this index to navigate project documentation.
 
 | No. | Document | Description | Status |
 |---|---|---|---|
-| 1 | [Migration Details](./docs/migration.md) | Current migration phase, migration activities, progress, and related notes. | In Progress |
-| 2 | [Initial Setup](./docs/initial_setup.md) | Clone the parent repository, run the setup script, prepare the OpenWrt source tree, and continue to the build workspace. | Available |
-| 2a | [helloworld / hellocpp](./docs/helloworld_hellocpp.md) | Simple C and C++ apps: build into the image (`=y`) or as APK modules (`=m`). | Available |
-| 3 | Target Configuration | LinkIt Smart 7688 target and device configuration. | Planned |
-| 4 | Kernel Configuration | Kernel options, drivers, and kernel customization. | Planned |
-| 5 | Package Development | Custom OpenWrt package development and integration. | Planned |
-| 6 | [Wireless and network](./docs/wireless_network.md) | Bake AP+STA and LAN 192.168.100.1 into the image (no hand-run UCI). | Available |
-| 7 | Network Configuration | Extra interface notes beyond [wireless_network.md](./docs/wireless_network.md). | Planned |
+| 1 | [Project phases](./docs/project-phases.md) | Phases 1–4; phase 4 started with auto `productinfo`. | **Current** |
+| 2 | [Migration Details](./docs/migration.md) | Feature index and related notes. | Available |
+| 3 | [Initial Setup](./docs/initial_setup.md) | Clone, setup script, OpenWrt source tree (phase 1). | Available |
+| 3a | [helloworld / hellocpp](./docs/helloworld_hellocpp.md) | C and C++ APK modules (phase 2). | Available |
+| 3b | [ossdn-test](./docs/ossdn-test.md) | Product CLI enable (phase 3). | Available |
+| 3c | [ossdn-test source changes](./docs/ossdn-test-source-changes.md) | Every `.c` / `.h` / Makefile edit vs 15.05: problem, cause, fix. | Available |
+| 3d | [ossdn-test test plan](./docs/ossdn-test-testplan.md) | What can PASS now, steps, dependencies; what cannot yet and why. | Available |
+| 3e | [ossdn-test troubleshooting](./docs/ossdn-test-troubleshooting.md) | One issue at a time; issue 1 = productinfo 1201 / auto after reboot. | Available |
+| 4 | Target Configuration | LinkIt Smart 7688 target and device configuration. | Planned |
+| 5 | Kernel Configuration | Kernel options, drivers, and kernel customization. | Planned |
+| 6 | Package Development | Custom OpenWrt package development and integration. | Planned |
+| 7 | [Wireless and network](./docs/wireless_network.md) | Left as reset (not phase 4). | Left as-is |
 | 8 | Firmware Build | Firmware configuration and build procedure. | Planned |
 | 9 | Firmware Deployment | Firmware deployment and recovery procedure. | Planned |
 | 10 | Testing | Platform and functional validation. | Planned |
@@ -139,7 +147,8 @@ make menuconfig
 | Repository and documentation structure | Available |
 | Initial setup automation | Available |
 | OpenWrt v25.12.5 source preparation | Available through setup script |
-| Migration | **In Progress** |
+| Migration / phases 1–3 | Done (setup, hellos, ossdn-test enable) |
+| Phase 4 ossdn-test modules | **Current** — auto productinfo via `xmfh-init-script` |
 | Target-specific configuration | Planned / subject to migration results |
 | Build integration | Planned |
 | Deployment and validation | Planned |
